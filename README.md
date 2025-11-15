@@ -6,6 +6,7 @@
 ![Lua](https://img.shields.io/badge/Lua-5.3%2B-000080?logo=lua)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![DotcLUI](https://img.shields.io/badge/DotcLUI-0.1-green?style=flat&labelColor=gray)
+![Python](https://img.shields.io/badge/Python-3.14-yellow?style=flat&labelColor=gray)
 
 ---
 
