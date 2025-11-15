@@ -5,6 +5,7 @@
 ![LÖVE2D](https://img.shields.io/badge/LÖVE2D-11.5%2B-ff6600?logo=love2d)
 ![Lua](https://img.shields.io/badge/Lua-5.3%2B-000080?logo=lua)
 ![License](https://img.shields.io/badge/License-MIT-blue)
+![DotcLUI](https://img.shields.io/badge/DotcLUI-0.1-green?style=flat&labelColor=gray)
 
 ---
 
@@ -33,7 +34,9 @@ love .
 ```Lua
 UI = require("DotcLUI.init")
 
-UI.text.text({
-    ...
-})
+love.draw()
+    UI.text.text({
+        ...
+    })
+end
 ```
