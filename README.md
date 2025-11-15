@@ -1,5 +1,5 @@
 # DotcLUI  
-> **D**ovintc’s **t**iny, **c**ustom **L**ÖVE2D **UI** framework  
+> **Do**vintc **t**iny, **c**ustom **L**ÖVE2D **UI** framework  
 > A lightweight, modular UI toolkit for LÖVE (Love2D) — built for clarity, theming, and rapid prototyping.
 
 ![LÖVE2D](https://img.shields.io/badge/LÖVE2D-11.5%2B-ff6600?logo=love2d)
@@ -8,7 +8,7 @@
 
 ---
 
-## 🌟 Features
+## Features
 
 - ✅ **Modular design** — `button`, `text`, `theme`, `layout`, `localization`
 - ✅ **Outline text rendering** (stroke + fill)
@@ -20,7 +20,7 @@
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone & Run
 ```bash
