@@ -25,5 +25,15 @@
 ### 1. Clone & Run
 ```bash
 git clone https://github.com/Dovintc32/DotcLUI.git
-cd DotcLUI
 love .
+```
+
+### 2. How Use
+
+```Lua
+UI = require("DotcLUI.init")
+
+UI.text.text({
+    ...
+})
+```
