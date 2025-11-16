@@ -1,6 +1,7 @@
 DotcLUI = {}
 
-DotcLUI.btn = require("DotcLUI.UI.button")
-DotcLUI.txt = require("DotcLUI.UI.text")
+DotcLUI.ui = require("DotcLUI.ui.init_ui")
+DotcLUI.utils = require("DotcLUI.utils.init_utils")
+
 
 return DotcLUI

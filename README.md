@@ -12,12 +12,11 @@
 
 ## Features
 
-- ✅ **Modular design** — `button`, `text`, `theme`, `layout`, `localization`
+- ✅ **Modular design** — `button`, `text`
 - ✅ **Outline text rendering** (stroke + fill)
 - ✅ **Rounded rectangles** with configurable radius
 - ✅ **Dynamic theming** — fonts, colors, padding
-- ✅ **Built-in i18n** — JSON-based localization (EN/RU/DE/…)
-- ✅ **Simple API** — `btn = UI.button.create({...})`, `UI.text.draw({...})`
+- ✅ **Simple API** — `btn = DotcLUI.button.new({...})`, `DotcLUI.ui.text.new({...})`
 - ✅ **No external dependencies** (pure Lua + LÖVE)
 
 ---
@@ -33,10 +32,10 @@ love .
 ### 2. How Use
 
 ```Lua
-UI = require("DotcLUI.init")
+DotcLUI = require("DotcLUI.init")
 
-love.draw()
-    UI.text.text({
+function love.draw()
+    DotcLUI.ui.text.new({
         ...
     })
 end

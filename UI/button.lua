@@ -1,6 +1,6 @@
 local button = {}
 
-function button.button()
+function button.new()
     love.graphics.print('Function "button" dont working')    
 end
 
