@@ -25,7 +25,7 @@
 
 ### 1. Clone & Run
 ```bash
-git clone https://github.com/Dovintc32/DotcLUI.git
+git clone https://github.com/Dovintc-off/DotcLUI.git
 love .
 ```
 
