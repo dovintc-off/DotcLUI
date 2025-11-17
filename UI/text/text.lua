@@ -4,8 +4,8 @@ function text.der(text, x, y)
     x = x or 100
     y = y or 100 
     love.graphics.print(tostring(text), x, y)
-    show = false
 end
+
 
 function text.new(data)
     local show = true
@@ -18,12 +18,14 @@ function text.new(data)
         local ok, msg = pcall(function()
             t = data["text"] or data[1]
             if t == nil then error("Bad Argument") end 
+            
         end)
+        
         if not ok then 
-            show = false
             text.der("Caution: Bad Argument") 
+            show = false
             return
-        end
+        end   
         
         -- cords
         local ok, msg = pcall(function()
@@ -37,10 +39,11 @@ function text.new(data)
         end)
         if not ok then
             text.der('Caution: Bad Argument')
+            show = false
         end
-
         -- draw
-        if show == true then
+        
+        if show then
             love.graphics.print(t, x, y)
         end
     end
