@@ -1,4 +1,6 @@
 text = {}
+local font = require("DotcLUI.utils.font")
+local color = require("DotcLUI.utils.color")
 
 function text.der(text, x, y)
     x = x or 100
@@ -42,9 +44,22 @@ function text.new(data)
             show = false
         end
         -- draw
+
+        if data["font"] ~= nil and data["size"] ~= nil then
+            font.set(data["font"], data["size"], true)
+        end
+
+        if data["color"] ~= nil and type(data["color"]) == "table" then
+            c = data["color"]
+            local r = c[1] or 1
+            local g = c[2] or 1
+            local b = c[3] or 1
+            local a = c[4] or 1
+            color.set(r, g, b, a)
+        end
         
         if show then
-            love.graphics.print(t, x, y)
+            love.graphics.print(tostring(t), x, y)
         end
     end
 end
