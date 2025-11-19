@@ -45,9 +45,11 @@ DotcLUI.ui.text.der("HELLO!", 100, 200)
 | xy или [2]  | таблица     | Координаты: `{x = 100, y = 200}` или `{100, 200}`.    |
 | font        | строка      | Путь к файлу шрифта (только `.ttf`) |
 | size        | число       | Размер шрифта (работает только если указан `font`)|
-| color       | таблица     | Цвет в формате `{r, g, b, a}` (значения от `0.0` до `1.0`).|
+| color       | таблица     | последним значением указывается тип цвета такие как: rgb, rgba, love|
 
 - Важно: если вы указали `font`, но не указали `size`, шрифт будет применёе но в размере 20
+- Цвет типа love принимает от 0 - 1 как в стандартном `love.graphics.setColor()`
+
 
 `Пример:`
 ```Lua
@@ -57,7 +59,15 @@ DotcLUI.ui.text.new({
 
 DotcLui.ui.text.new({
     "HI", {100, 200}, 
-    color = {1, 1, 1},
+    color = {1, 1, 1, "love"},
+    font = "DotcLUI/style/font/Gasalt Regular.ttf",
+    size = 40
+})
+
+DotcLui.ui.text.new({
+    xy = {100, 200}, 
+    text = "HI"
+    color = {255, 125, 25, 200 "rgba"},
     font = "DotcLUI/style/font/Gasalt Regular.ttf",
     size = 40
 })
