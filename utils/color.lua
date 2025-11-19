@@ -1,15 +1,33 @@
 local json = require("DotcLUI.utils.dkjson")
-local color_base = {1, 1, 1, 1}
+local color_base = {1, 1, 1, 1, type="love"}
 local color = {}
 
-function color.save(r, g, b, a)
-    color_base = {r, g, b, a}
+function color.save(r, g, b, a, mod)
+    color_base = {r, g, b, a, type=mod}
 end
 
-function color.set(r, g, b, a)
-    a = a or 1
-    love.graphics.setColor(r, g, b, a)
-    color.save(r, g, b, a)
+function rgb(r, g, b, a, type)
+    if type == "rgba" then 
+        return r / 255, g / 255, b / 255, a /255
+    elseif type == "rgb" then 
+        return r / 255, g / 255, b / 255, 1 
+    end
+end
+
+function color.set(r, g, b, a, type)
+    if type == "rgba" then
+        love.graphics.setColor(rgb(r, g, b, a, type))
+        color.save(rgb(r, g, b, a, type), type)
+        a = a or 1
+    elseif type == "rgb" then
+        love.graphics.setColor(rgb(r, g, b, 1, type))
+        color.save(rgb(r, g, b, 1, type), type)
+    elseif type == "love" then
+        love.graphics.setColor(r, g, b, a)
+        color.save(r, g, b, a, "love")
+    else
+        error("[DotcLUI]: Caution! Color type not specified")
+    end
 end
 
 function color.get(index, asTable)
