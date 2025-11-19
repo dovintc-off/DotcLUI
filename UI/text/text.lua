@@ -1,6 +1,7 @@
 text = {}
 local font = require("DotcLUI.utils.font")
 local color = require("DotcLUI.utils.color")
+local style = require("DotcLUI.utils.style")
 
 function text.der(text, x, y)
     x = x or 100
@@ -42,41 +43,62 @@ function text.new(data)
             end
         end
 
-        -- draw
-        if data["font"] ~= nil and data["size"] ~= nil then
-            font.set(data["font"], data["size"], true)
-        end
-
-        if data.color and type(data.color) == "table" then
-            local c = data.color
-            local r, g, b, a, mode
-
-            
-            if c[4] == "rgb" or c[4] == "rgba" or c[4] == "love" then
-                r, g, b = c[1], c[2], c[3]
-                a = (c[4] == "love") and 1 or 255
-                mode = c[4]
-            elseif c[5] == "rgb" or c[5] == "rgba" or c[5] == "love" then
-                r, g, b, a = c[1], c[2], c[3], c[4]
-                mode = c[5]
-            elseif type(c[4]) == "number" then
-                r, g, b, a = c[1], c[2], c[3], c[4]
-                mode = "love"
-            elseif type(c[3]) == "number" then
-                r, g, b, a = c[1], c[2], c[3], 1
-                mode = "love"
-            else
-                r, g, b, a = c[1], c[2], c[3], c[4]
-                mode = "love"
+        if style.get_ssff() == false then
+            -- draw
+            if data["font"] ~= nil and data["size"] ~= nil then
+                font.set(data["font"], data["size"], true)
             end
 
-            r = tonumber(r) or 1
-            g = tonumber(g) or 1
-            b = tonumber(b) or 1
-            a = tonumber(a) or 1
-            mode = mode or "love"
+            if data.color and type(data.color) == "table" then
+                local c = data.color
+                local r, g, b, a, mode
 
+                
+                if c[4] == "rgb" or c[4] == "rgba" or c[4] == "love" then
+                    r, g, b = c[1], c[2], c[3]
+                    a = (c[4] == "love") and 1 or 255
+                    mode = c[4]
+                elseif c[5] == "rgb" or c[5] == "rgba" or c[5] == "love" then
+                    r, g, b, a = c[1], c[2], c[3], c[4]
+                    mode = c[5]
+                elseif type(c[4]) == "number" then
+                    r, g, b, a = c[1], c[2], c[3], c[4]
+                    mode = "love"
+                elseif type(c[3]) == "number" then
+                    r, g, b, a = c[1], c[2], c[3], 1
+                    mode = "love"
+                else
+                    r, g, b, a = c[1], c[2], c[3], c[4]
+                    mode = "love"
+                end
+
+                r = tonumber(r) or 1
+                g = tonumber(g) or 1
+                b = tonumber(b) or 1
+                a = tonumber(a) or 1
+                mode = mode or "love"
+
+                color.set(r, g, b, a, mode)
+            end
+        else
+            local json = require("DotcLUI.utils.dkjson")
+            local file = love.filesystem.read("DotcLUI/style/style.json")
+            if not file then 
+                error("[DotcLUI]: Failed to load style.json")
+            end
+            local style_text = json.decode(file)
+
+            -- color
+            r = tonumber(style_text.text.color[2][1]) or 1
+            g = tonumber(style_text.text.color[2][2]) or 1
+            b = tonumber(style_text.text.color[2][3]) or 1
+            a = tonumber(style_text.text.color[2][4]) or 1
+            mode = style_text.text.color[1]
             color.set(r, g, b, a, mode)
+            
+            if style_text.text.font ~= nil and style_text.text.size ~= nil then
+                font.set(style_text.text.font:sub(2, #style_text.text.font - 1), style_text.text.size)
+            end
         end
         
         if show then

@@ -1,0 +1,16 @@
+{
+    "text": {
+        "color": [
+            "rgba",
+            [
+                255,
+                0,
+                255,
+                255
+            ]
+        ],
+        "size": 30,
+        "centred": true,
+        "font": "\"DotcLUI/style/font/Gasalt_Regular.ttf\""
+    }
+}
