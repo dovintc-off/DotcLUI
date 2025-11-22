@@ -45,8 +45,9 @@ function text.new(data)
 
         if style.get_ssff() == false then
             -- draw
-            if data["font"] ~= nil and data["size"] ~= nil then
-                font.set(data["font"], data["size"], true)
+            local f = data["font"] or "DotcLUI/style/font/Arial/Arial.ttf"
+            if data["size"] ~= nil then
+                font.set("DotcLUI/style/font/Arial/Arial.ttf", data["size"])
             end
 
             if data.color and type(data.color) == "table" then
@@ -96,8 +97,9 @@ function text.new(data)
             mode = style_text.text.color[1]
             color.set(r, g, b, a, mode)
             
-            if style_text.text.font ~= nil and style_text.text.size ~= nil then
-                font.set(style_text.text.font:sub(2, #style_text.text.font - 1), style_text.text.size)
+            local f = style_text.text.font or "DotcLUI/style/font/Arial/Arial.ttf"
+            if style_text.text.size ~= nil then
+                font.set(f, style_text.text.size)
             end
         end
         
