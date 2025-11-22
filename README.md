@@ -7,6 +7,10 @@
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![DotcLUI](https://img.shields.io/badge/DotcLUI-0.1.1-green?style=flat&labelColor=gray)
 ![Python](https://img.shields.io/badge/Python-3.14-yellow?style=flat&labelColor=gray)
+![Python](https://img.shields.io/badge/Windows-only-purple?style=flat&labelColor=gray)
+
+⚠️ **Platform Limitation**:  
+Currently, the DotcLUI framework is fully supported only on Windows. This is due to the use of `.bat` scripts for interfacing with the Python backend (e.g., in the `style.from_file()` function). Support for Linux and macOS is planned and will be implemented in future updates.
 
 ---
 
