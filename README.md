@@ -9,11 +9,13 @@
 ![Python](https://img.shields.io/badge/Python-3.14-yellow?style=flat&labelColor=gray)
 ![Windows Only](https://img.shields.io/badge/Windows-Only-purple?style=flat&labelColor=gray)
 
-beta 0.1.2 | fix: color system and .dli parser
+## Beta 0.1.2 fix: color system and .dli parser
 
 - Replace color.set() with color.set_rgb() / color.set_love()
 - Add robust float/int color parsing
 - Fix Python .dli parser: support commas, quotes, rgb/rgba
+
+---
 
 ⚠️ **Platform Limitation**:  
 Currently, the DotcLUI framework is fully supported only on Windows. This is due to the use of `.bat` scripts for interfacing with the Python backend (e.g., in the `style.from_file()` function). Support for Linux and macOS is planned and will be implemented in future updates.
