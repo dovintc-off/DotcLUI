@@ -9,7 +9,7 @@
 ![Python](https://img.shields.io/badge/Python-3.14-yellow?style=flat&labelColor=gray)
 ![Windows Only](https://img.shields.io/badge/Windows-Only-purple?style=flat&labelColor=gray)
 
-## Version 0.1.3 fix: color system and .dli parser
+## Version 0.1.2 fix: color system and .dli parser
 - **Support system fonts** (e.g., 'Arial', 'Arial Bold') in .dli files
 
 ---
