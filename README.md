@@ -9,11 +9,8 @@
 ![Python](https://img.shields.io/badge/Python-3.14-yellow?style=flat&labelColor=gray)
 ![Windows Only](https://img.shields.io/badge/Windows-Only-purple?style=flat&labelColor=gray)
 
-## Beta 0.1.2 fix: color system and .dli parser
-
-- Replace color.set() with color.set_rgb() / color.set_love()
-- Add robust float/int color parsing
-- Fix Python .dli parser: support commas, quotes, rgb/rgba
+## Version 0.1.3 fix: color system and .dli parser
+- **Support system fonts** (e.g., 'Arial', 'Arial Bold') in .dli files
 
 ---
 

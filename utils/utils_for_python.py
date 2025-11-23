@@ -39,17 +39,29 @@ def parser(dli: str) -> dict:
                 if value.startswith('"') and value.endswith('"'):
                     value = value[1:-1]
                 try: value = int(value)
-                except ValueError: pass
+                except ValueError:
+                    pass
                 if isinstance(value, str) and value.startswith(("rgb", "rgba", "love")):
                     try:
+                        if value.startswith(("rgba", "rgb")):
+                            color_type = "rgb"
+                        elif value.startswith("love"):
+                            color_type = "love"
+                        else:
+                            color_type = "rgb"
                         args_str = value.split("(", 1)[1].rsplit(")", 1)[0]
                         args = []
                         for x in args_str.split(","):
                             x = x.strip()
                             if '.' in x: args.append(float(x))
                             else: args.append(int(x))
-                        value = args
+                        value = [color_type] + args
                     except Exception:
                         pass
+
+                if key == "font":
+                    if value == "Arial": value = "DotcLUI/style/font/Arial/Arial.ttf"
+                    elif value == "Arial Bold": value = "DotcLUI/style/font/Arial/Arial-bold.ttf"
+
                 style[component_name][key] = value
     return style
