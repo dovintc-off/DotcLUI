@@ -20,68 +20,36 @@ def get_data():
     
     return text, output_path
 
-def parser(text: str) -> dict:
-    text = text.replace("\n", "").replace(" ", "").strip()
-    if not text or text == "{}":
-        return {}
-
-    if text.startswith('{') and text.endswith('}'):
-        text = text[1:-1]
-
-    blocks = text.split('},{')
-    result = {}
-
-    for block in blocks:
-        if ':' not in block:
+def parser(dli: str) -> dict:
+    style = {}
+    dli = dli.replace("\n", "&").lstrip()[1:-2]
+    block = dli.split("},&{")
+    for i in range(len(block)):
+        style_etp1 = block[i].split(":", 1)
+        if len(style_etp1) < 2:
             continue
-
-        block_name, props_part = block.split(':', 1)
-        props = {}
-
-        if props_part:
-            for prop in props_part.split(','):
-                if not prop:
-                    continue
-
-                if prop.endswith(')') and '(' in prop:
+        component_name = style_etp1[0]
+        style_notspited = style_etp1[1].lstrip("&").rstrip("&").split(",&")
+        if component_name not in style:
+            style[component_name] = {}
+        for prop in style_notspited:
+            if '-' in prop:
+                key, value = prop.split('-', 1)
+                key = key.strip()
+                if value.startswith('"') and value.endswith('"'):
+                    value = value[1:-1]
+                try: value = int(value)
+                except ValueError: pass
+                if isinstance(value, str) and value.startswith(("rgb", "rgba", "love")):
                     try:
-                        paren_idx = prop.rindex('(')
-                        prefix = prop[:paren_idx]
-                        numbers_str = prop[paren_idx+1:-1]
-
-                        if '-' in prefix:
-                            key, mode = prefix.rsplit('-', 1)
-                        else:
-                            key, mode = "color", prefix  # fallback
-
-                        numbers = []
-                        for x in numbers_str.split('.'):
-                            if '.' in x:
-                                numbers.append(float(x))
-                            else:
-                                try:
-                                    numbers.append(int(x))
-                                except ValueError:
-                                    numbers.append(x)
-
-                        props[key] = [mode, numbers]
-
+                        args_str = value.split("(", 1)[1].rsplit(")", 1)[0]
+                        args = []
+                        for x in args_str.split(","):
+                            x = x.strip()
+                            if '.' in x: args.append(float(x))
+                            else: args.append(int(x))
+                        value = args
                     except Exception:
-                        props[prop] = prop
-                else:
-                    if '-' in prop:
-                        key, val = prop.split('-', 1)
-                        if val == "true":
-                            props[key] = True
-                        elif val == "false":
-                            props[key] = False
-                        elif val.replace('.', '', 1).replace('-', '', 1).isdigit():
-                            props[key] = float(val) if '.' in val else int(val)
-                        else:
-                            props[key] = val
-                    else:
-                        props[prop] = True
-
-        result[block_name] = props
-
-    return result
+                        pass
+                style[component_name][key] = value
+    return style

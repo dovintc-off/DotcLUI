@@ -29,9 +29,7 @@ function text.new(data)
             x = tonumber(data.xy.x or data.xy[1])
             y = tonumber(data.xy.y or data.xy[2])
             if type(x) ~= "number" or type(y) ~= "number" then
-                local info = debug.getinfo(2, "Sl")
-                local where = string.format("%s:%d", info.short_src, info.currentline)
-                error("[DotcLUI]: Caution! Invalid coordinates argument. (called at " .. where .. ")", 2)
+                error("[DotcLUI]: Caution! Bad Argument ]")
             end
         elseif type(data[2]) == "table" then
             x = tonumber(data[2][1])

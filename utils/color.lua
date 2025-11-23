@@ -1,52 +1,15 @@
-local json = require("DotcLUI.utils.dkjson")
-local color_base = {1, 1, 1, 1, type="love"}
 local color = {}
 
-function color.save(r, g, b, a, mod)
-    color_base = {r, g, b, a, type=mod}
+function q(n, m) return math.max(0, math.min(tonumber(n or 1), (m or 255))/(m or 255)) end
+
+function color.set_rgb(r, g, b, a)
+    a = a or 255
+    love.graphics.setColor(q(r), q(g), q(b), q(a))
 end
 
-function rgb(r, g, b, a, type)
-    if type == "rgba" then 
-        return r / 255, g / 255, b / 255, a /255
-    elseif type == "rgb" then 
-        return r / 255, g / 255, b / 255, 1 
-    end
+function color.set_love(r, g, b, a)
+    a = a or 1.0
+    love.graphics.setColor(q(r, 1), q(g, 1), q(b, 1), q(a, 1))
 end
-
-function color.set(r, g, b, a, type)
-    if type == "rgba" then
-        love.graphics.setColor(rgb(r, g, b, a, type))
-        color.save(rgb(r, g, b, a, type), type)
-        a = a or 1
-    elseif type == "rgb" then
-        love.graphics.setColor(rgb(r, g, b, 1, type))
-        color.save(rgb(r, g, b, 1, type), type)
-    elseif type == "love" then
-        love.graphics.setColor(r, g, b, a)
-        color.save(r, g, b, a, "love")
-    else
-        error("[DotcLUI]: Caution! Color type not specified")
-    end
-end
-
--- function color.get(index, asTable)
---     if index == nil or index == "all" then
---         if asTable then return {color_base[1], color_base[2], color_base[3], color_base[4]}
---         else return unpack(color_base)
---         end
---     else 
---         local i = tonumber(index)
---         if i and i >= 0 and i <= 4 then
---             return color_base[i]
---         end
---     end
--- end
-
-function color.get()
-    if index == nil then
-        return color_base
-    end    
-end
-
+  
 return color

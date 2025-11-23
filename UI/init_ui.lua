@@ -1,6 +1,6 @@
 local ui = {}
 
 ui.button = require("DotcLUI.ui.button")
-ui.text = require("DotcLUI.ui.text.text")
+ui.text = require("DotcLUI.ui.text")
 
 return ui

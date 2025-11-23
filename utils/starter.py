@@ -4,8 +4,8 @@ change_output()
 text, output_path = get_data()
 
 if False:
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(parser(text))
+    with open("text.txt", "w", encoding="utf-8") as f:
+        f.write(str(parser(text)))
 
 if not False:
     with open(output_path, "w", encoding="utf-8") as f:
