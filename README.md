@@ -5,12 +5,13 @@
 ![LÖVE2D](https://img.shields.io/badge/LÖVE2D-11.5%2B-ff6600?logo=love2d)
 ![Lua](https://img.shields.io/badge/Lua-5.3%2B-000080?logo=lua)
 ![License](https://img.shields.io/badge/License-MIT-blue)
-![DotcLUI](https://img.shields.io/badge/DotcLUI-0.1.1-green?style=flat&labelColor=gray)
+![DotcLUI](https://img.shields.io/badge/DotcLUI-0.1.2-green?style=flat&labelColor=gray)
 ![Python](https://img.shields.io/badge/Python-3.14-yellow?style=flat&labelColor=gray)
 ![Windows Only](https://img.shields.io/badge/Windows-Only-purple?style=flat&labelColor=gray)
 
-## Version 0.1.2 fix: color system and .dli parser
-- **Support system fonts** (e.g., 'Arial', 'Arial Bold') in .dli files
+## Recent Updates (v0.1.2)
+- feat(api): add shorthand DotcLUI.text() alias for DotcLUI.ui.text.new()
+- docs: complete guide for all stable features — no alpha/beta APIs included
 
 ---
 
@@ -21,12 +22,9 @@ Currently, the DotcLUI framework is fully supported only on Windows. This is due
 
 ## Features
 
-- ✅ **Modular design** — `button`, `text`
-- ✅ **Outline text rendering** (stroke + fill)
-- ✅ **Rounded rectangles** with configurable radius
-- ✅ **Dynamic theming** — fonts, colors, padding
-- ✅ **Simple API** — `btn = DotcLUI.button.new({...})`, `DotcLUI.ui.text.new({...})`
-- ✅ **No external dependencies** (pure Lua + LÖVE)
+- ✅ **Modular design** — `text`, `color`
+- ✅ **Dynamic theming** — fonts, colors
+- ✅ **Simple API** — `DotcLUI.color.set_rgb(...)`, `DotcLUI.text({...})`
 
 ---
 
@@ -44,10 +42,11 @@ love .
 DotcLUI = require("DotcLUI.init")
 
 function love.draw()
-    DotcLUI.ui.text.new({
+    DotcLUI.text({
         ...
     })
 end
 ```
 
-### 3. More info in DotcLUI/guide/
+### 3. More info in [`DotcLUI/guide.md`](guide.md) 
+`* click to view `
