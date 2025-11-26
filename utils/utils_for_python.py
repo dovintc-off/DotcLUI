@@ -6,6 +6,21 @@ def change_output():
     sys.stdout = log_file
     sys.stderr = log_file
     
+def collapse_ampersand(s):
+    while "&&" in s:
+        s = s.replace("&&", "&")
+    return s
+    
+def remove_quoted_parts(s):
+    inside_quotes = False
+    result = ""
+    for char in s:
+        if char == "=":
+            inside_quotes = not inside_quotes
+        elif not inside_quotes:
+            result += char
+    return result
+        
 def get_data():
     if len(sys.argv) < 2:
         print("[Python in DotcLUI]: specify the path to the input file")
@@ -22,7 +37,9 @@ def get_data():
 
 def parser(dli: str) -> dict:
     style = {}
+    dli = remove_quoted_parts(dli)
     dli = dli.replace("\n", "&").lstrip()[1:-2]
+    dli = collapse_ampersand(dli)
     block = dli.split("},&{")
     for i in range(len(block)):
         style_etp1 = block[i].split(":", 1)
@@ -58,10 +75,5 @@ def parser(dli: str) -> dict:
                         value = [color_type] + args
                     except Exception:
                         pass
-
-                if key == "font":
-                    if value == "Arial": value = "DotcLUI/style/font/Arial/Arial.ttf"
-                    elif value == "Arial Bold": value = "DotcLUI/style/font/Arial/Arial-bold.ttf"
-
                 style[component_name][key] = value
     return style

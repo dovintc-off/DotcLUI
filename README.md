@@ -5,13 +5,15 @@
 ![LÖVE2D](https://img.shields.io/badge/LÖVE2D-11.5%2B-ff6600?logo=love2d)
 ![Lua](https://img.shields.io/badge/Lua-5.3%2B-000080?logo=lua)
 ![License](https://img.shields.io/badge/License-MIT-blue)
-![DotcLUI](https://img.shields.io/badge/DotcLUI-0.1.2-green?style=flat&labelColor=gray)
+![DotcLUI](https://img.shields.io/badge/DotcLUI-0.1.3-green?style=flat&labelColor=gray)
 ![Python](https://img.shields.io/badge/Python-3.14-yellow?style=flat&labelColor=gray)
 ![Windows Only](https://img.shields.io/badge/Windows-Only-purple?style=flat&labelColor=gray)
 
-## Recent Updates (v0.1.2)
-- feat(api): add shorthand DotcLUI.text() alias for DotcLUI.ui.text.new()
-- docs: complete guide for all stable features — no alpha/beta APIs included
+## Alpha 0.1.3
+
+🔹 Alpha 0.1.3 – New Features
+- More built-in fonts for richer text styling
+- New button component with :draw() and :isPressed() methods for interactive UI
 
 ---
 
@@ -50,3 +52,16 @@ end
 
 ### 3. More info in [`DotcLUI/guide.md`](guide.md) 
 `* click to view `
+
+## Font Licenses
+
+This project includes third-party fonts under the following licenses:
+
+- **Gros Ventre** by Dimitri Antonov / Blue Curve Designstudio  
+  License: [CC BY 4.0](style/font/Gros_Ventre/LICENSE.txt)
+
+- **Folies Bergere** by Dimitri Antonov / Blue Curve Designstudio  
+  License: [CC BY 4.0](style/font/Folies_Bergere/LICENSE.txt)
+
+- **BoldPixels** by Yūki Pixels  
+  License: [CC BY-SA 4.0](style/font/BoldPixels/LICENSE.txt)

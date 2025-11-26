@@ -3,16 +3,14 @@ local font = require("DotcLUI.utils.font")
 local color = require("DotcLUI.utils.color")
 local style = require("DotcLUI.utils.style")
 
-function love.load()
-    if style.get_ssff then
-        json = require("DotcLUI.utils.dkjson")
-        file = love.filesystem.read("DotcLUI/style/style.json")
-        if not file then 
-            error("[DotcLUI]: Failed to load style.json")
-        end
-        style_text = json.decode(file)
-    end
+local json = require("DotcLUI.utils.dkjson")
+file = love.filesystem.read("DotcLUI/style/style.json")
+if not file then 
+    error("[DotcLUI]: Failed to load style.json")
 end
+local style_text = json.decode(file)
+
+
 
 function text.der(text, x, y)
     x = x or 100
@@ -45,13 +43,10 @@ function text.new(data)
             end
         end
 
-        if style.get_ssff() == false then
+        if style.get_ssff == false then
             if data.font ~= nil then
-                local f = data["font"] or "DotcLUI/style/font/Arial/Arial.ttf"
-                if data["font"] == "Arial" then f = "DotcLUI/style/font/Arial/Arial.ttf" end
-                if data["font"] == "Arial Bold" then f = "DotcLUI/style/font/Arial/Arial-bold.ttf" end
                 local s = data["size"] or 20
-                font.set(f, s)
+                font.set_all(data["font"], s)
             end
 
             if data.color then
@@ -77,8 +72,7 @@ function text.new(data)
                 end
             end
             
-            local sf = "DotcLUI/style/font/Arial/Arial.ttf"
-            font.set(style_text.text["font"] or sf, style_text.text["size"] or 20)
+            font.set_all(style_text.text["font"], style_text.text["size"] or 20)
         end
         
         if show then

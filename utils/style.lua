@@ -1,5 +1,6 @@
 local style = {}
     style.ssff = false
+    style.debug = false
 
     function style.from_file(style_file)
         style.ssff = true
@@ -9,5 +10,4 @@ local style = {}
     function style.get_ssff()
         return style.ssff
     end
-
 return style
